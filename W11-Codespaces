@@ -7,7 +7,7 @@ read -p "Paste authtoken here (Copy and Right-click to paste): " CRP
 nohup ./ngrok tcp --region ap 30889 &>/dev/null &
 echo "Downloading QEMU"
 sudo apt install -y qemu-kvm
-sudo wget -O lite11.qcow2 https://app.vagrantup.com/thuonghai2711/boxes/WindowsQCOW2/versions/1.0.2/providers/qemu.box
+[ -s lite11.qcow2 ] || sudo wget -O lite11.qcow2 https://app.vagrantup.com/thuonghai2711/boxes/WindowsQCOW2/versions/1.0.2/providers/qemu.box
 availableRAMcommand="free -m | tail -2 | head -1 | awk '{print \$7}'"
 availableRAM=$(echo $availableRAMcommand | bash)
 custom_param_ram="-m "$(expr $availableRAM - 1024 )"M"
